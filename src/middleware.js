@@ -9,8 +9,7 @@ export async function middleware(request) {
 
 
   if (cookie) {  
-    // SÍ HAY SESIÓN
-
+    // HAY SESIÓN
     // renovamos sesión ampliando tiempo de expiración de la cookie
     const renewCookie = await updateCookie('session', cookie)
 
@@ -21,7 +20,6 @@ export async function middleware(request) {
   }
 
   // NO HAY SESIÓN
-
   if (request.nextUrl.pathname != LOGIN_URL) {  // Si página distinta de LOGIN_URL
 
     const loginUrl = new URL(LOGIN_URL, request.url)
