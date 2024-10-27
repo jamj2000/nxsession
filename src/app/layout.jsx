@@ -1,0 +1,33 @@
+import '@/app/globals.css'
+import localFont from "next/font/local";
+import Header from '@/components/header';
+
+
+const geistSans = localFont({
+  src: "../fonts/GeistVF.woff",
+  variable: "--font-geist-sans",
+  weight: "100 900",
+});
+
+const geistMono = localFont({
+  src: "../fonts/GeistMonoVF.woff",
+  variable: "--font-geist-mono",
+  weight: "100 900",
+});
+
+
+export const metadata = {
+  title: "Next.js Authentication",
+  description: "Example using NextAuth.js",
+};
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased min-h-screen`}>
+        <Header />
+        {children}
+      </body>
+    </html>
+  );
+}
