@@ -17,8 +17,7 @@ const geistMono = localFont({
 
 
 export const metadata = {
-  title: "Next.js Authentication",
-  description: "Example using NextAuth.js",
+  title: "Uso de cookies en un sesión"
 };
 
 export default function RootLayout({ children }) {
