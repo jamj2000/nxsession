@@ -43,7 +43,7 @@ export async function deleteCookie(name) {
   const cookieStore = await cookies()
  
   cookieStore.set({
-    name: "session",
+    name,
     value: "",
     maxAge: 0,
     httpOnly: true

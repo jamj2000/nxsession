@@ -11,10 +11,10 @@ export async function middleware(request) {
   if (cookie) {  
     // HAY SESIÓN
     // renovamos sesión ampliando tiempo de expiración de la cookie
-    const renewCookie = await updateCookie('session', cookie)
+    const newCookie = updateCookie('session', cookie)
 
     const response = NextResponse.next();
-    response.cookies.set(renewCookie)
+    response.cookies.set(newCookie)
 
     return response
   }
@@ -23,6 +23,7 @@ export async function middleware(request) {
   if (request.nextUrl.pathname != LOGIN_URL) {  // Si página distinta de LOGIN_URL
 
     const loginUrl = new URL(LOGIN_URL, request.url)
+    
     // Colocamos en callbackUrl la dirección a la que volver tras login exitoso
     loginUrl.searchParams.set('callbackUrl', request.nextUrl.pathname)
 
