@@ -3,12 +3,12 @@ import { getCookie, updateCookie } from "@/lib/cookies";
 
 const LOGIN_URL = '/'
 
-export async function middleware(request) {
+export async function proxy(request) {
   const cookie = await getCookie('session')
-  console.log('MIDDLEWARE ', request.nextUrl.pathname);
+  console.log('PROXY ', request.nextUrl.pathname);
 
 
-  if (cookie) {  
+  if (cookie) {
     // HAY SESIÓN
     // renovamos sesión ampliando tiempo de expiración de la cookie
     const newCookie = updateCookie('session', cookie)
@@ -23,7 +23,8 @@ export async function middleware(request) {
   if (request.nextUrl.pathname != LOGIN_URL) {  // Si página distinta de LOGIN_URL
 
     const loginUrl = new URL(LOGIN_URL, request.url)
-    
+    // console.log(request.url);
+
     // Colocamos en callbackUrl la dirección a la que volver tras login exitoso
     loginUrl.searchParams.set('callbackUrl', request.nextUrl.pathname)
 
