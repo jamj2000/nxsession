@@ -32,7 +32,7 @@ export async function login(formData) {
 
 export async function logout() {
   // Eliminamos cookie de sesión
-  deleteCookie('session')
+  await deleteCookie('session')
 
   // redirect("/");   // No recarga si ya estamos en esta página
 
